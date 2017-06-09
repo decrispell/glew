@@ -85,6 +85,15 @@ if (GLEW_OSMESA)
   set (X11_LIBRARIES)
 endif ()
 
+#### EGL mode ####
+
+if (GLEW_EGL)
+  set (EGL_LIB_NAME EGL)
+  add_definitions (-DGLEW_EGL)
+  set (GLEW_LIBRARIES ${EGL_LIB_NAME} ${OPENGL_LIBRARIES})
+  set (X11_LIBRARIES)
+endif ()
+
 #### GLEW ####
 
 include_directories (${GLEW_DIR}/include)
