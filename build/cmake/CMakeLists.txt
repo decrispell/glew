@@ -10,7 +10,11 @@ include(GNUInstallDirs)
 
 if (COMMAND cmake_policy)
   cmake_policy (SET CMP0003 NEW)
-  cmake_policy (SET CMP0042 NEW)
+  if (POLICY CMP0042) 
+    cmake_policy (SET CMP0042 NEW)
+  else()
+    message(WARNING "CMake policy CMP0042 not recognized by this version of CMake")
+  endif()
 endif()
 
 set(CMAKE_DEBUG_POSTFIX d)
